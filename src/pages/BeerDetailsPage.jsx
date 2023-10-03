@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 function BeerDetailsPage() {
-  const { beerId } = useParams;
+  const { beerId } = useParams();
 
   const [beer, setBeer] = useState("");
 
@@ -17,22 +17,17 @@ function BeerDetailsPage() {
 
   useEffect(() => {
     fetchOneBeer();
-  }, []);
+  }, [beerId]);
 
   return (
     <>
-      <section>
-        <img src={beer.image_url} style={{ width: 50 }} />
-      </section>
-
-      <section>
-        <p>{beer.name}</p>
-        <p>{beer.tagline}</p>
-        <p>{beer.first_brewed}</p>
-        <p>{beer.attenuation_level}</p>
-        <p>{beer.description}</p>
-        <p>{beer.contributed_by}</p>
-      </section>
+      <img src={beer.image_url} style={{ width: 50 }} />
+      <p>{beer.name}</p>
+      <p>{beer.tagline}</p>
+      <p>{beer.first_brewed}</p>
+      <p>{beer.attenuation_level}</p>
+      <p>{beer.description}</p>
+      <p>{beer.contributed_by}</p>
     </>
   );
 }
